@@ -29,7 +29,7 @@ function StackNaviagtion(props) {
   //---------- life cycle
   
   useEffect(() => {
-    // console.log("Is Logged In =>", isLoggedIn);
+    console.log("Is Logged In =>", isLoggedIn);
   }, [isLoggedIn]);
   
   //---------- return main view
@@ -70,6 +70,7 @@ function StackNaviagtion(props) {
         //     />
         //   )
       }
+
     </Stack.Navigator>
   );
 }

@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import userReducer from "./User/user.reducer";
+import reducer from "./User/Reducers";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import localReducer from "./Local/local.reducer";
 
@@ -13,6 +13,6 @@ const persistConfig = {
 };
 
 export default combineReducers({
-  user: userReducer,
+  redux_state: reducer,
   localReducer: persistReducer(persistConfig, localReducer),
 });

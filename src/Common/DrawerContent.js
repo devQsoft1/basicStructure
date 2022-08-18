@@ -44,8 +44,6 @@ import TextStyles from "../style/TextStyles";
 import SpaceStyles from "../style/SpaceStyles";
 
 // redux action
-import { removeUser } from "../redux/Local/local.actions";
-import { ResetStates } from "../redux/User/user.actions";
 
 //---------- redux
 

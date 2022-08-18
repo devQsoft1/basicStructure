@@ -1,0 +1,13 @@
+const ActionType = {
+  // AUTH
+  USER_SIGN_UP_SUCCESS: "USER_SIGN_UP_SUCCESS",
+  USER_HAVE_TOKEN: "USER_HAVE_TOKEN",
+ 
+  CLEAR_ERRORS: "CLEAR_ERRORS",
+
+
+  CLEAR_ERRORS: "CLEAR_ERRORS",
+
+};
+
+export default ActionType;

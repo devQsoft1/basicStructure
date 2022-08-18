@@ -16,6 +16,8 @@ import SpaceStyles from "../style/SpaceStyles";
 import TextStyles from "../style/TextStyles";
 import Frame from "../Common/Frame";
 
+import { AppContext } from '../ContextHooks/ThemeContext'
+
 //---------- main component
 
 const HomeScreen = ({ navigation }) => {
@@ -28,8 +30,9 @@ const HomeScreen = ({ navigation }) => {
     changeTheme,
     storeDataInAppState,
     removeDataInAppState,
-  } = useContext();
+  } = useContext(AppContext);
 
+  console.log('------------------------------------------')
   // useLayoutEffect(() => {
   //   navigation.setOptions({
   //     headerRight: () => (
@@ -61,19 +64,26 @@ const HomeScreen = ({ navigation }) => {
   return (
     <Frame>
 
-
-
       <CustomText
         text={"HomeScreen"}
         style={[TextStyles.textBold24Black, { alignSelf: "center" }, SpaceStyles.bottom20]}
       />
 
       <TouchableOpacity
+
+        style={{
+          backgroundColor: 'red',
+          width: '100%',
+          height: 50
+        }}
         onPress={() => {
           changeTheme()
         }}
       >
-Click me
+        <Text>
+
+          Click me
+        </Text>
       </TouchableOpacity>
 
 

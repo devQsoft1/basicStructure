@@ -1,7 +1,7 @@
 //---------- imports
 
 // react
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { LogBox, SafeAreaView, StatusBar } from "react-native";
 import { Provider } from "react-redux";
 import { store, persistor } from "./src/redux/createStore";
@@ -11,22 +11,19 @@ import { PersistGate } from "redux-persist/integration/react";
 import { NavigationContainer } from "@react-navigation/native";
 import StackNaviagtion from "./src/navigation/StackNavigation";
 
+// context
+import { GlobalContextProvide } from './src/ContextHooks/ThemeContext'
+
 // helper
 import NavigationService from "./src/navigation/NavigationService";
 
 //---------- context
 
-const AppContext = createContext();
-
 //---------- main app / component
 
 const App = () => {
 
-  //---------- main app / component
-  const [isDarkTheme, setIsDarkTheme] = useState(false)
-  const [appStateObject, setAppStateObject] = useState({})
-  const [appStateArray, setAppStateArray] = useState([])
-
+  //---------- state
 
   //---------- life cycle
 
@@ -38,57 +35,24 @@ const App = () => {
 
   //---------- user's action
 
-  // change theme
-  const changeTheme = () => {
-
-    setIsDarkTheme(!isDarkTheme)
-  }
-
-  // store data in state
-  const storeDataInAppState = ({ data, key }) => {
-
-    setAppStateObject({
-      [key]: data,
-      ...appStateObject
-    })
-  }
-
-  // remove data from app state
-  const removeDataInAppState = ({ key }) => {
-
-    setAppStateObject({
-      [key]: {},
-      ...appStateObject
-    })
-  }
-
   //---------- return main view
 
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <NavigationContainer
-          ref={(navigatorRef) => {
-            NavigationService.setTopLevelNavigator(navigatorRef);
-          }}
-        >
-          <StatusBar />
-
-          <AppContext.Provider
-            appState={{
-              isDarkTheme,
-              appStateObject,
-              appStateArray,
-
-              changeTheme,
-              storeDataInAppState,
-              removeDataInAppState,
+        <GlobalContextProvide>
+          <NavigationContainer
+            ref={(navigatorRef) => {
+              NavigationService.setTopLevelNavigator(navigatorRef);
             }}
           >
-            <StackNaviagtion />
-          </AppContext.Provider>
 
-        </NavigationContainer>
+            <StatusBar />
+
+            <StackNaviagtion />
+
+          </NavigationContainer>
+        </GlobalContextProvide>
       </PersistGate>
     </Provider>
   );
