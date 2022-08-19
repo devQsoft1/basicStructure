@@ -10,11 +10,11 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // icons
-import HomeIcon from "../../Assets/Fonts/HomeIcon";
-import SearchIcon from "../../Assets/Fonts/SearchIcon";
-import UserIcon from "../../Assets/Fonts/UserIcon";
-import MenuIcon from "../../Assets/Fonts/MenuIcon";
-import SaveIcon from "../../Assets/Fonts/SaveIcon";
+import HomeIcon from "../../Assets/Icons/HomeIcon";
+import SearchIcon from "../../Assets/Icons/SearchIcon";
+import UserIcon from "../../Assets/Icons/UserIcon";
+import MenuIcon from "../../Assets/Icons/MenuIcon";
+import SaveIcon from "../../Assets/Icons/SaveIcon";
 
 // components
 import SearchScreen from "../../Components/SearchScreen";
@@ -42,12 +42,7 @@ function HomeNavigation(props) {
     >
 
       <Stack.Screen
-        options={{
-          headerStyle: {
-            backgroundColor: '#fff',
-          },
-          headerTitle: () => null,
-        }}
+        options={{ headerShown: false }}
         name="HomeScreen"
         component={Home}
       />
@@ -56,9 +51,11 @@ function HomeNavigation(props) {
   );
 }
 
-
 const Tab = createBottomTabNavigator();
-function TabNavigation() {
+
+function UserTabNavigation() {
+
+  console.log('-------------------------, admin')
 
   //---------- return main view of drawer
 
@@ -98,26 +95,31 @@ function TabNavigation() {
       })}
     >
       <Tab.Screen
+        options={{ headerShown: false }}
         name="HomeScreen"
         component={HomeScreen}
       />
 
       <Tab.Screen
+        options={{ headerShown: false }}
         name="SearchScreen"
         component={SearchScreen}
       />
 
       <Tab.Screen
+        options={{ headerShown: false }}
         name="favoriteScreen"
         component={FavoriteScreen}
       />
 
       <Tab.Screen
+        options={{ headerShown: false }}
         name="UserScreen"
         component={UserScreen}
       />
 
       <Tab.Screen
+        options={{ headerShown: false }}
         name="MenuScreen"
         component={MenuScreen}
       />
@@ -152,4 +154,4 @@ function TabNavigation() {
 
 //---------- export component
 
-export default TabNavigation;
+export default UserTabNavigation;

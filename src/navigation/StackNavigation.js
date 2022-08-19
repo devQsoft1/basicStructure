@@ -7,53 +7,55 @@ import React, { useEffect, useState } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { useDispatch, useSelector } from "react-redux";
 import AuthNavigation from "./AuthNavigator/AuthNavigation";
-import HomeNavigation from "./HomeNavigator/HomeNavigation";
+import AdminTabNavigation from "./AdminTabNavigation/AdminTabNavigation";
+import UserTabNavigation from './UserTabNavigation/UserTabNavigation'
 
-import SpalshScreen from '../Common/SpalshScreen';
+import SplashScreen from '../Common/SplashScreen';
 
 // global stack veriable
 const Stack = createStackNavigator();
 
-const mapState = ({ localReducer }) => ({
-  isLoggedIn: localReducer.isLoggedIn,
-});
-
 //---------- main app / component
 
 function StackNaviagtion(props) {
-  
+
   //---------- state, redux state, veriable and hooks
-  
-  const { isLoggedIn } = useSelector(mapState);
+
 
   //---------- life cycle
-  
+
   useEffect(() => {
-    console.log("Is Logged In =>", isLoggedIn);
-  }, [isLoggedIn]);
-  
+  }, []);
+
   //---------- return main view
-  
+
   return (
-    <Stack.Navigator initialRouteName="SpalshScreen">
+    <Stack.Navigator initialRouteName="SplashScreen">
 
       <Stack.Screen
         options={{ headerShown: false }}
 
-        name="SpalshScreen"
-        component={SpalshScreen} />
-
-      <Stack.Screen
-        options={{ headerShown: false }}
-        name="Route"
-        component={HomeNavigation}
-      />
+        name="SplashScreen"
+        component={SplashScreen} />
 
       <Stack.Screen
         options={{ headerShown: false }}
         name="AuthNavigator"
         component={AuthNavigation}
       />
+
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="UserNavigator"
+        component={UserTabNavigation}
+      />
+
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name="AdminNavigator"
+        component={AdminTabNavigation}
+      />
+
 
       {
         //   !isLoggedIn ? (

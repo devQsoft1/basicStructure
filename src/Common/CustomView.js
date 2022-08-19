@@ -8,46 +8,44 @@ import ContextHelper from "../ContextHooks/ContextHelper";
 
 //---------- main app / component
 
-const Frame = (props) => {
+const CustomView = (props) => {
 
     //---------- state, veriables and hooks
 
     const {
-        theme,
         isDarkTheme,
+        theme,
         appStateObject,
         appStateArray,
+        currentUser,
+
         changeTheme,
         storeDataInAppState,
         removeDataFromAppState,
+        storeDataInAsyncStorage,
+        getDataFromAsyncStorage,
+        setCurrentUser,
     } = ContextHelper();
 
     //---------- life cycle
 
     useEffect(() => {
-    
+
     }, []);
 
     //---------- return main view 
 
     return (
         <View
-            style={[
-                {
-                    flex: 1,
-                },
-                theme
-            ]}
+            style={[theme, props?.style]}
         >
-            <ScrollView>
-                {
-                    props.children
-                }
-            </ScrollView>
+            {
+                props.children
+            }
         </View>
     );
 };
 
 //---------- export component
 
-export default Frame;
+export default CustomView;

@@ -14,6 +14,7 @@ const Stack = createStackNavigator();
 
 function AuthNavigation(props) {
 
+    console.log('-------------------------, auth')
     //---------- return main view
 
     return (
